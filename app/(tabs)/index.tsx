@@ -2,6 +2,7 @@ import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from 'reac
 import React, { useEffect, useState } from 'react'
 import { fetchMovies } from '@/api/movies'
 import { useQuery } from '@tanstack/react-query';
+import MovieListItems from '@/components/MovieListItems';
 
 
 interface Movie {
@@ -53,10 +54,7 @@ const index = () => {
     data={movies}
     numColumns={2}
     renderItem={({item}) => (
-      <View style={styles.con}>
-        <Text style={styles.text}>{item.title}</Text>
-        {/* <Image source={{uri: item.image}} style={{width: 100, height: 100}} /> */}
-      </View>
+      <MovieListItems movie={item}/>
     )}
     />
   )
@@ -69,8 +67,6 @@ export default index
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     padding: 10,
   },  
   con: {
